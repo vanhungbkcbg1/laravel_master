@@ -24,3 +24,8 @@ Route::get('/error',function(){
 })->name('error');
 
 Route::get('/get_file','MyController@getFile')->name('get_file');
+
+Route::get('/sinhvien','SinhvienController@index')->name('sinhvien_list');
+Route::get('/file/{file}','FileController@view')->name('file_view');
+Route::get('/sinhvien/create','SinhvienController@create')->name('sinhvien_create');
+Route::post('/sinhvien/save','SinhvienController@save')->name('sinhvien_save');
