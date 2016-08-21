@@ -55,4 +55,8 @@ class MyController extends Controller
 
 
     }
+    public function getFile()
+    {
+        return response()->download(public_path().'/file/larasign-sample.pdf');
+    }
 }

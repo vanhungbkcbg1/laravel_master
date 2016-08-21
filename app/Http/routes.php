@@ -22,3 +22,5 @@ Route::get('/error',function(){
 
     return view('errors.error');
 })->name('error');
+
+Route::get('/get_file','MyController@getFile')->name('get_file');
