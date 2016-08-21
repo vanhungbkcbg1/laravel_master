@@ -9,6 +9,7 @@
 namespace App\Http\Controllers;
 
 
+use App\BaseClass\ISinhvien;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use DB;
@@ -55,8 +56,9 @@ class MyController extends Controller
 
 
     }
-    public function getFile()
+    public function getFile(ISinhvien $s)
     {
+        $s->doSomething();
         //download
         return response()->download(public_path().'/file/larasign-sample.pdf');
         //display on webbrower
