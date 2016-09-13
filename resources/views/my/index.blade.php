@@ -27,5 +27,6 @@
     <h5>{{asset('fdsfs')}}</h5>
     <h6>{{asset('/resource/assets/sass/app.scss')}}</h6>
     <a href="{{route('get_file')}}">Download file</a>
+    {{$count}}
 </form>
 @endsection

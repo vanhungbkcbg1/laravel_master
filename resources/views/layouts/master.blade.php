@@ -37,6 +37,7 @@
             <p>The .navbar-fixed-bottom class makes the navigation bar stay at the bottom.</p>
         </div>
         <div class="clearfix visible-lg"></div>
+        {{$count}}
     </div>
 </div>
 
