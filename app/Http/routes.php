@@ -11,9 +11,7 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/','HomeController@index');
 
 Route::get('/test',"MyController@test");
 Route::post("/save","MyController@save")->name("save");
@@ -29,3 +27,10 @@ Route::get('/sinhvien','SinhvienController@index')->name('sinhvien_list');
 Route::get('/file/{file}','FileController@view')->name('file_view');
 Route::get('/sinhvien/create','SinhvienController@create')->name('sinhvien_create');
 Route::post('/sinhvien/save','SinhvienController@save')->name('sinhvien_save');
+Route::post('/authentication','MyAuthentication@authenticate');
+Route::get('/signup','MyAuthentication@signup');
+Route::get('/login','MyAuthentication@login');
+Route::post('/user/register','MyAuthentication@register');
+Route::get('/user/logout',function(){
+    \Illuminate\Support\Facades\Auth::logout();
+});
