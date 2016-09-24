@@ -15,6 +15,6 @@ class Controller extends BaseController
 
     protected function error()
     {
-        return response()->view("errors.503",[],503);
+        abort(503);
     }
 }
