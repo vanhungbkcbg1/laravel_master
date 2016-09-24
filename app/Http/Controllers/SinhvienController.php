@@ -9,10 +9,10 @@
 namespace App\Http\Controllers;
 
 
-use DB;
+//use DB;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
-use Illuminate\Support\Facades\Validator;
 
 class SinhvienController extends Controller
 {
@@ -27,8 +27,9 @@ class SinhvienController extends Controller
     {
         try {
 
-            $data = DB::select('select * from sinhvien');
-            return view('sinhvien.index')->with('data', $data);
+            $results=DB::table('sinhvien')->paginate(10);
+//            $data = DB::select('select * from sinhvien');
+            return view('sinhvien.index')->with('data', $results);
         } catch (\Exception $e) {
             parent::error();
         }
@@ -64,6 +65,7 @@ class SinhvienController extends Controller
             $password=$this->request['password'];
             $email=$this->request['email'];
             DB::insert('insert into sinhvien(email,password,image) VALUES (?,?,?)',[$email,$password,$file_name]);
+            $this->request->session()->flash('message','name');
             return redirect()->route('sinhvien_list');
 
         } catch (\Exception $e) {
