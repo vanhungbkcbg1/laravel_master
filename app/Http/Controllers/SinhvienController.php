@@ -10,6 +10,7 @@ namespace App\Http\Controllers;
 
 
 //use DB;
+use Mail;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
@@ -66,6 +67,17 @@ class SinhvienController extends Controller
             $email=$this->request['email'];
             DB::insert('insert into sinhvien(email,password,image) VALUES (?,?,?)',[$email,$password,$file_name]);
             $this->request->session()->flash('message','name');
+
+//            Mail::raw('Text to e-mail', function ($message) {
+//                $message->from('vanhungbkcbg2@gmail.com','vanhung');
+//                $message->to('vanhungbkcbg1@gmail.com');
+//            });
+
+            Mail::send('mail.content',[], function ($message) {
+                $message->from('vanhungbkcbg2@gmail.com','vanhung');
+                $message->attach(storage_path('app/vanhung.txt'));
+                $message->to('vanhungbkcbg1@gmail.com');
+            });
             return redirect()->route('sinhvien_list');
 
         } catch (\Exception $e) {

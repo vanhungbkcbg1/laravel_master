@@ -34,5 +34,6 @@
             </tbody>
         </table>
     </div>
+    total record {{$data->total()}}
     {{ $data->links() }}
 @endsection
