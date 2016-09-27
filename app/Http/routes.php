@@ -34,3 +34,9 @@ Route::post('/user/register','MyAuthentication@register');
 Route::get('/user/logout',function(){
     \Illuminate\Support\Facades\Auth::logout();
 });
+
+\Event::listen('Illuminate\Database\Events\QueryExecuted', function ($query) {
+    var_dump($query->sql);
+    var_dump($query->bindings);
+    var_dump($query->time);
+});
