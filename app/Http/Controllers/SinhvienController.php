@@ -28,7 +28,7 @@ class SinhvienController extends Controller
     {
         try {
 
-            $results=DB::table('sinhvien')->paginate(10);
+            $results=DB::table('sinhvien')->select('id','email','image','password')->paginate(10);
 //            $data = DB::select('select * from sinhvien');
             return view('sinhvien.index')->with('data', $results);
         } catch (\Exception $e) {
