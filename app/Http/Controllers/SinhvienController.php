@@ -29,6 +29,7 @@ class SinhvienController extends Controller
         try {
 
             $results=DB::table('sinhvien')->select('id','email','image','password')->paginate(10);
+            test();
 
             $from=($results->currentPage()-1)*$results->perPage();
             $to=($results->currentPage())*$results->perPage();
