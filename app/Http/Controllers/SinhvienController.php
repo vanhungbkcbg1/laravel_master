@@ -29,6 +29,13 @@ class SinhvienController extends Controller
         try {
 
             $results=DB::table('sinhvien')->select('id','email','image','password')->paginate(10);
+
+            $from=($results->currentPage()-1)*$results->perPage();
+            $to=($results->currentPage())*$results->perPage();
+            if($results->currentPage()*$results->perPage()>$results->total())
+            {
+                $to=$to-$results->currentPage()*$results->perPage()+$results->total();
+            }
 //            $data = DB::select('select * from sinhvien');
             return view('sinhvien.index')->with('data', $results);
         } catch (\Exception $e) {
