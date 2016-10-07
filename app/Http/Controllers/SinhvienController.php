@@ -10,6 +10,7 @@ namespace App\Http\Controllers;
 
 
 //use DB;
+use Illuminate\Support\Facades\Log;
 use Mail;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -29,7 +30,7 @@ class SinhvienController extends Controller
         try {
 
             $results=DB::table('sinhvien')->select('id','email','image','password')->paginate(10);
-            test();
+//            test();
 
             $from=($results->currentPage()-1)*$results->perPage();
             $to=($results->currentPage())*$results->perPage();
@@ -37,7 +38,11 @@ class SinhvienController extends Controller
             {
                 $to=$to-$results->currentPage()*$results->perPage()+$results->total();
             }
+
+
 //            $data = DB::select('select * from sinhvien');
+            Log::info('this is my log');
+            Log::error('error');
             return view('sinhvien.index')->with('data', $results);
         } catch (\Exception $e) {
             parent::error();
