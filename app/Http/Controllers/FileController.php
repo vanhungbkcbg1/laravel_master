@@ -9,15 +9,19 @@
 namespace App\Http\Controllers;
 
 
-use App\BaseClass\ISinhvien;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Validator;
 use DB;
+
 class FileController extends Controller
 {
 
     public function view($file)
     {
-        return response()->file(storage_path('app/'.$file));
+        try
+        {
+            return response()->file(storage_path('app/'.$file));
+        }catch(\Exception $e){
+            return parent::error();
+        }
+
     }
 }

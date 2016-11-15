@@ -15,6 +15,6 @@ class Controller extends BaseController
 
     protected function error()
     {
-        abort(503);
+       return abort(503);
     }
 }

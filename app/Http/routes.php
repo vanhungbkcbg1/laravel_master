@@ -28,7 +28,7 @@ Route::get('/file/{file}','FileController@view')->name('file_view');
 Route::get('/sinhvien/create','SinhvienController@create')->name('sinhvien_create');
 Route::post('/sinhvien/save','SinhvienController@save')->name('sinhvien_save');
 Route::post('/authentication','MyAuthentication@authenticate');
-Route::get('/signup','MyAuthentication@signup');
+Route::get('/signup','MyAuthentfileication@signup');
 Route::get('/login','MyAuthentication@login');
 Route::post('/user/register','MyAuthentication@register');
 Route::get('/user/logout',function(){
