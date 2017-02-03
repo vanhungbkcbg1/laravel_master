@@ -22,6 +22,7 @@ Route::get('/error',function(){
 })->name('error');
 
 Route::get('/get_file','MyController@getFile')->name('get_file');
+Route::get('/event','MyController@event');
 
 Route::get('/sinhvien','SinhvienController@index')->name('sinhvien_list');
 Route::get('/file/{file}','FileController@view')->name('file_view');

@@ -10,6 +10,7 @@ namespace App\Http\Controllers;
 
 
 use App\BaseClass\ISinhvien;
+use App\Events\SomeEvent;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use DB;
@@ -64,4 +65,10 @@ class MyController extends Controller
         //display on webbrower
 //        return response()->file(public_path().'/file/larasign-sample.pdf');
     }
+
+	public function event(){
+
+		//emit event
+		event(new SomeEvent());
+	}
 }
