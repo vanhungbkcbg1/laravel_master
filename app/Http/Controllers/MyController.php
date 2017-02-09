@@ -11,7 +11,9 @@ namespace App\Http\Controllers;
 
 use App\BaseClass\ISinhvien;
 use App\Events\SomeEvent;
+use Illuminate\Contracts\Filesystem\Filesystem;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 use DB;
 class MyController extends Controller
@@ -71,4 +73,19 @@ class MyController extends Controller
 		//emit event
 		event(new SomeEvent());
 	}
+
+    public function asset(){
+        return asset('file/Desert.jpg');
+    }
+
+    public function storage(){
+
+        $myfile = fopen(storage_path(mb_convert_encoding("はじめまして.txt",'UTF-8')), "w") or die("Unable to open file!");
+        $txt = "John Doe\n";
+        fwrite($myfile, $txt);
+        $txt = "Jane Doe\n";
+        fwrite($myfile, $txt);
+        fclose($myfile);
+//       Storage::put('はじめまして.txt','vanhung');
+    }
 }
