@@ -2,6 +2,8 @@
 <head></head>
 <title>Menu</title>
 <link rel="stylesheet" href="{{url('css/bootstrap.css')}}">
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular.min.js"></script>
+<script src="http://cdnjs.cloudflare.com/ajax/libs/angular.js/1.2.16/angular-resource.min.js"></script>
 <body>
 <div class="container">
     <nav class="navbar navbar-inverse">
@@ -41,6 +43,8 @@
     </div>
 </div>
 
+@section('script')
 
+@show
 </body>
 </html>

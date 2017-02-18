@@ -54,6 +54,11 @@ class SinhvienController extends Controller
         return view('sinhvien.create');
     }
 
+    public function angular(){
+
+        return view('angular.index');
+    }
+
     public function save()
     {
         try {
@@ -96,5 +101,16 @@ class SinhvienController extends Controller
         } catch (\Exception $e) {
             parent::error();
         }
+    }
+
+    public function getAll()
+    {
+        $data=DB::table('sinhvien')->get();
+        return response()->json($data);
+    }
+
+    public function getById($id){
+        $data=DB::table('sinhvien')->where('id',$id)->first();
+        return response()->json($data);
     }
 }

@@ -35,8 +35,25 @@ Route::get('/user/logout',function(){
     \Illuminate\Support\Facades\Auth::logout();
 });
 
+
+Route::get('/angular','SinhvienController@angular');
+Route::get('/api/sinhviens','SinhvienController@getAll');
+Route::get('/api/sinhviens/{id}','SinhvienController@getById');
 //\Event::listen('Illuminate\Database\Events\QueryExecuted', function ($query) {
 //    var_dump($query->sql);
 //    var_dump($query->bindings);
 //    var_dump($query->time);
 //});
+Route::auth();
+
+Route::get('/home', 'HomeController@index');
+
+Route::group(['prefix' => 'admin'], function() {
+    Route::get('/login', ['as' => 'admin.getLogin', 'uses' => 'Admin\AuthController@getLogin']);
+    Route::post('/login', ['as' => 'admin.postLogin', 'uses' => 'Admin\AuthController@postLogin']);
+    Route::get('/logout', ['as' => 'admin.getLogout', 'uses' => 'Admin\AuthController@getLogout']);
+
+    Route::group(['middleware' => ['auth.admin:admin']], function() {
+        Route::get('/', ['as' => 'admin.home', 'uses' => 'Admin\IndexController@getIndex']);
+    });
+});
