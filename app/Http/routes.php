@@ -64,3 +64,8 @@ Route::group(['prefix' => 'admin'], function() {
 //upload image router
 Route::get('/upload','FileController@upload');
 Route::post('/upload','FileController@doUpload');
+
+//router for test multi ajax request at time
+Route::get('/request1','FileController@request1');
+Route::get('/request2','FileController@request2');
+Route::get('/test','FileController@test');

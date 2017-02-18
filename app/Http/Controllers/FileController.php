@@ -45,4 +45,16 @@ class FileController extends Controller
         }
 
     }
+
+    public function request1(){
+        sleep(10);
+        return json_encode(['data'=>'request1']);
+    }
+    public function request2(){
+        return json_encode(['data'=>'request2']);
+    }
+
+    public function test(){
+        return view('ajax_multi_request.index');
+    }
 }
