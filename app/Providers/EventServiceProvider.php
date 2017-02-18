@@ -11,11 +11,16 @@ class EventServiceProvider extends ServiceProvider
      * The event listener mappings for the application.
      *
      * @var array
+     * declare on this and run php artisan event:generate command to generate event class ans listenner class
      */
     protected $listen = [
         'App\Events\SomeEvent' => [
             'App\Listeners\EventListener',
         ],
+	    'App\Events\MyEvent' => [
+		    'App\Listeners\MyListener',
+		    'App\Listeners\AddMyListener',
+	    ],
     ];
 
     /**
