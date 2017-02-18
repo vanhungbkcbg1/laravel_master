@@ -10,6 +10,7 @@ namespace App\Http\Controllers;
 
 
 use DB;
+use Illuminate\Http\Request;
 
 class FileController extends Controller
 {
@@ -21,6 +22,26 @@ class FileController extends Controller
             return response()->file(storage_path('app/'.$file));
         }catch(\Exception $e){
             return parent::error();
+        }
+
+    }
+
+    public function upload(){
+        return view('upload.index');
+    }
+
+    public function doUpload(Request $request){
+
+        try{
+            $this->validate($request, [
+                'file' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            ]);
+
+            $imageName = time().'.'.$request->file->getClientOriginalExtension();
+            $request->file->move(public_path('images'), $imageName);
+            $file=$request->file('file');
+        }catch(\Exception $e){
+            return $e->getMessage();
         }
 
     }

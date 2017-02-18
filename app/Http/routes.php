@@ -60,3 +60,7 @@ Route::group(['prefix' => 'admin'], function() {
         Route::get('/', ['as' => 'admin.home', 'uses' => 'Admin\IndexController@getIndex']);
     });
 });
+
+//upload image router
+Route::get('/upload','FileController@upload');
+Route::post('/upload','FileController@doUpload');
