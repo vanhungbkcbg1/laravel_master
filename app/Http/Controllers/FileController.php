@@ -39,9 +39,11 @@ class FileController extends Controller
 
             $imageName = time().'.'.$request->file->getClientOriginalExtension();
             $request->file->move(public_path('images'), $imageName);
-            $file=$request->file('file');
+
+            return response()->json(['status'=>'success']);
         }catch(\Exception $e){
-            return $e->getMessage();
+
+            return response()->json(['status'=>'error','msg'=>$e->getMessage()]);
         }
 
     }
