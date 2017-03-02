@@ -30,6 +30,15 @@ class FileController extends Controller
         return view('upload.index');
     }
 
+    public function formdata(){
+        return view('upload.test');
+    }
+
+    public function postFormData(Request $request){
+        $all=$request->all();
+        return view('upload.test');
+    }
+
     public function doUpload(Request $request){
 
         try{
