@@ -69,3 +69,7 @@ Route::post('/upload','FileController@doUpload');
 Route::get('/request1','FileController@request1');
 Route::get('/request2','FileController@request2');
 Route::get('/test','FileController@test');
+Route::get('/admin',function(){
+
+   return view('admin.index');
+});
