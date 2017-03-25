@@ -80,12 +80,9 @@ class MyController extends Controller
 
     public function storage(){
 
-        $myfile = fopen(storage_path(mb_convert_encoding("はじめまして.txt",'UTF-8')), "w") or die("Unable to open file!");
-        $txt = "John Doe\n";
-        fwrite($myfile, $txt);
-        $txt = "Jane Doe\n";
-        fwrite($myfile, $txt);
-        fclose($myfile);
-//       Storage::put('はじめまして.txt','vanhung');
+        $handler=fopen("wfio://".storage_path('/年間予定表/index.txt'),'r');
+        $content=fread($handler,filesize("wfio://".storage_path('/年間予定表/index.txt')));
+       $content= file_get_contents("wfio://".storage_path('/年間予定表/index.txt'));
+
     }
 }
