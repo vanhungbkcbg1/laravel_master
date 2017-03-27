@@ -80,10 +80,13 @@ class MyController extends Controller
 
     public function storage(){
 
-        $path='年間予定表';
-        $file_name="はじめまして.txt";
+        $path='どら トモデル プロファイル とセマンティック めよう';
+        $file_name="どら トモデル プロファイル とセマンティック めよう.txt";
+        if(!file_exists('wfio://'.storage_path($path))){
+            mkdir('wfio://'.storage_path($path), 0777, true);
+        }
         $fullpath=storage_path($path.DIRECTORY_SEPARATOR.$file_name);
-        $myfile = fopen('wfio://'.$fullpath, "w") or die("Unable to open file!");
+        $myfile = fopen('wfio://'.$fullpath, "w+") or die("Unable to open file!");
         $txt = "John Doe\n";
         fwrite($myfile, $txt);
         $txt = "Jane Doe\n";
