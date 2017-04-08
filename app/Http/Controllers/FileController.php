@@ -68,5 +68,7 @@ class FileController extends Controller
     public function test(){
         return view('ajax_multi_request.index');
 
+
+
     }
 }
