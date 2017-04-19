@@ -22,6 +22,7 @@ Route::get('/error',function(){
 })->name('error');
 
 Route::get('/get_file','MyController@getFile')->name('get_file');
+Route::get('/get_japanese','MyController@downloadJapaneseFile');
 Route::get('/event','MyController@event');
 Route::get('/asset','MyController@asset');
 Route::get('/storage','MyController@storage');

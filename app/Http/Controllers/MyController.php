@@ -16,6 +16,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
 use DB;
+use Symfony\Component\HttpFoundation\File\File;
+
 class MyController extends Controller
 {
     private $request;
@@ -66,6 +68,27 @@ class MyController extends Controller
         return response()->download(public_path().'/file/larasign-sample.pdf');
         //display on webbrower
 //        return response()->file(public_path().'/file/larasign-sample.pdf');
+    }
+
+    public function downloadJapaneseFile()
+    {
+        $my_file=new File(public_path('file/vanhung.txt'));
+//        return response()->download(public_path('どら トモデル プロ)
+
+        $out = fopen('php://output', 'wb');
+        $file = fopen($my_file->getPathname(), 'rb');
+
+        stream_copy_to_stream($file, $out, $my_file->getSize(), 0);
+        fclose($out);
+        fclose($file);
+        header('Content-Description: File Transfer');
+        header('Content-Type: application/octet-stream');
+        header('Content-Disposition: attachment; filename="'."vanhung.txt".'"');
+        header('Expires: 0');
+        header('Cache-Control: must-revalidate');
+        header('Pragma: public');
+        header('Content-Length: ' . $my_file->getSize());
+        exit;
     }
 
 	public function event(){
