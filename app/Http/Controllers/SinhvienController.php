@@ -23,7 +23,7 @@ class SinhvienController extends Controller
     public function __construct(Request $request)
     {
         $this->request = $request;
-        $this->middleware('auth');
+//        $this->middleware('auth');
     }
 
     public function index()
@@ -43,7 +43,6 @@ class SinhvienController extends Controller
 
 //            $data = DB::select('select * from sinhvien');
             Log::info('this is my log');
-            Log::error('error');
             return view('sinhvien.index')->with('data', $results);
         } catch (\Exception $e) {
             parent::error();

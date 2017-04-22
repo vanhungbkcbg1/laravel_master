@@ -32,7 +32,7 @@ class MyController extends Controller
         return view('my.index')->with("data",$data);
     }
 
-    public function save()
+    public function save(Request $request)
     {
         try
         {

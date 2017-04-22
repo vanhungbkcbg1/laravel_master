@@ -21,7 +21,7 @@ class ConfigureLogging extends IlluminateConfigureLogging
     protected function configureDailyHandler(Application $app, Writer $log)
     {
         $log->useDailyFiles(
-            $app->storagePath().'/logs/foo.log',
+            $app->storagePath().'/logs/sql.log',
             $app->make('config')->get('app.log_max_files', 5)
         );
     }

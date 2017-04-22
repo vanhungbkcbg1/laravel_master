@@ -55,8 +55,8 @@ $app->singleton(
 |
 */
 
-$app->configureMonologUsing(function ($monolog) {
-    $monolog->pushHandler(new StreamHandler(storage_path('logs/vanhung.log'), Logger::WARNING));
-});
+//$app->configureMonologUsing(function ($monolog) {
+//    $monolog->pushHandler(new StreamHandler(storage_path('logs/vanhung.log'), Logger::WARNING));
+//});
 
 return $app;
